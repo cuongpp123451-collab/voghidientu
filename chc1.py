@@ -1,5 +1,25 @@
 import nltk
-nltk.download('wordnet')
+import ssl
+
+# Fix SSL issue for NLTK download
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
+
+# Download NLTK data
+try:
+    nltk.data.find('corpora/wordnet')
+except LookupError:
+    nltk.download('wordnet', quiet=True)
+
+try:
+    nltk.data.find('corpora/omw-eng')
+except LookupError:
+    nltk.download('omw-eng', quiet=True)
+
 import streamlit as st
 from googletrans import Translator
 from nltk.corpus import wordnet
