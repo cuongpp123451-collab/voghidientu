@@ -1,4 +1,4 @@
- app.py - Phiên bản hoàn chỉnh cho Streamlit Cloud
+
 import streamlit as st
 from googletrans import Translator
 import eng_to_ipa as ipa
@@ -273,3 +273,4 @@ if __name__ == "__main__":
         st.session_state.vi_word = ""
     
     main()
+
